@@ -17,6 +17,8 @@
 2. **使用Flickr30k-CN数据集进行进一步微调**：提升中文图文对齐能力
 3. **使用私有数据集进行精细微调**：适应特定领域需求
 
+详细的微调过程和实验结果请查看 [训练过程详细文档](docs/TRAINING_PROCESS.md)。
+
 ## 项目结构
 
 ```
@@ -37,10 +39,22 @@ chinese-clip-finetune/
 │   └── pretrained_weights/   # 预训练权重（需要手动下载）
 ├── tools/                    # 辅助工具
 │   └── model_convert.py      # 模型格式转换工具
+├── docs/                     # 详细文档
+│   ├── TRAINING_PROCESS.md   # 训练过程详细文档
+│   ├── DATA_PREPARATION.md   # 数据准备指南
+│   └── PERFORMANCE_EVALUATION.md # 模型评估指南
 └── README.md                 # 主文档
 ```
 
 ## 使用指南
+
+### 模型获取
+
+由于模型文件较大，我们没有将其直接包含在代码仓库中。您可以通过以下方式获取模型：
+
+1. **Hugging Face 模型库**：[https://huggingface.co/Chien317/chinese-clip-finetuned](https://huggingface.co/Chien317/chinese-clip-finetuned)
+
+2. **自行训练**：按照下面的训练指南自行训练模型
 
 ### 在云服务器上训练模型
 
@@ -82,9 +96,13 @@ bash model_training/scripts/check_status.sh
 3. **启动微调**：修改`train_pipeline.sh`中的参数，指定你的数据集路径
 4. **运行训练**：执行上述训练流程
 
+详细的数据准备流程请查看 [数据准备指南](docs/DATA_PREPARATION.md)。
+
 ## 训练结果
 
 训练完成后，模型将保存在`experiments/`目录下，可以选择性能最好的模型用于应用部署。
+
+详细的评估结果和性能分析请查看 [模型评估指南](docs/PERFORMANCE_EVALUATION.md)。
 
 ## 技术栈
 
@@ -99,7 +117,21 @@ bash model_training/scripts/check_status.sh
 
 ## 关于Chinese-CLIP
 
-Chinese-CLIP是针对中文环境优化的多模态预训练模型，由OFA团队开发。本项目基于Chinese-CLIP进行微调，以适应特定应用场景的需求。
+Chinese-CLIP是针对中文环境优化的多模态预训练模型，由OFA团队开发。本项目基于Chinese-CLIP进行微调，以适应特定应用场景的需求。更多信息请访问 [Chinese-CLIP官方仓库](https://github.com/OFA-Sys/Chinese-CLIP)。
+
+## 引用
+
+如果您使用了我们的模型或训练流程，请引用：
+
+```
+@misc{chen2023chineseclipfinetuned,
+  author = {Chen, Chien},
+  title = {Chinese-CLIP Fine-tuned Models for Material Science},
+  year = {2023},
+  publisher = {GitHub},
+  url = {https://github.com/Chien317/chinese-clip-finetune}
+}
+```
 
 ## 许可
 
